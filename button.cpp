@@ -30,7 +30,9 @@ Button::Button(int pin, void(*buttonPressedCallback)(void), long debounceDelay, 
   _longPressRepetitionDelay = longPressRepetitionDelay;
   _lastLongPressTime = 0;
   _longPressRecognized = false;
-  pinMode(_pin, INPUT);
+    if (_pin >= 0) {
+        pinMode(_pin, INPUT);
+    }
 }
 
 void Button::update() {
