@@ -8,8 +8,8 @@ class Button {
 
 public:
 
-  Button(int pin, void(*buttonPressedCallback)(void), long debounceDelay);
-  Button(int pin, void(*buttonPressedCallback)(void), long debounceDelay, void(*buttonLongPressedCallback)(void), long longPressRecognitionDelay, long longPressRepetitionDelay);
+  Button(int pin, void(*buttonPressedCallback)(void), long debounceDelay, int activeVoltageLevel = HIGH, bool pullupResistor = true);
+  Button(int pin, void(*buttonPressedCallback)(void), long debounceDelay, void(*buttonLongPressedCallback)(void), long longPressRecognitionDelay, long longPressRepetitionDelay, int activeVoltageLevel = HIGH, bool pullupResistor = true);
   void update();
     
     
@@ -18,6 +18,8 @@ private:
   int  _pin;
   void (*_buttonPressedCallback)(void);
 
+  int _activeVoltageLevel;
+    
   long _debounceDelay;
   int  _buttonState; // Debounced state
   int  _lastButtonState; // transitory state
